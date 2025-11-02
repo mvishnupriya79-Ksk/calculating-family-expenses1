@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<expenses>
+  <expense>
+    <family_id>FAM001</family_id>
+    <date>2025-10-01</date>
+    <category>Food</category>
+    <description>Groceries - weekly</description>
+    <amount>2500.00</amount>
+    <payment_mode>Cash</payment_mode>
+  </expense>
+
+  <expense>
+    <family_id>FAM001</family_id>
+    <date>2025-10-03</date>
+    <category>Transport</category>
+    <description>Petrol</description>
+    <amount>1200.00</amount>
+    <payment_mode>Card</payment_mode>
+  </expense>
+
+  <expense>
+    <family_id>FAM001</family_id>
+    <date>2025-10-05</date>
+    <category>Utilities</category>
+    <description>Electricity bill</description>
+    <amount>1800.00</amount>
+    <payment_mode>UPI</payment_mode>
+  </expense>
+
+  <expense>
+    <family_id>FAM001</family_id>
+    <date>2025-11-01</date>
+    <category>Education</category>
+    <description>School fees</description>
+    <amount>4000.00</amount>
+    <payment_mode>Card</payment_mode>
+  </expense>
+</expenses>
+2) XML Schema (XSD) for validation
+Save as family_expenses.xsd to validate your XML before import (optional).
+
+xml
+Copy code
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://example.com/family_expenses"
+            xmlns="http://example.com/family_expenses"
+            elementFormDefault="qualified">
+
+  <xsd:element name="expenses">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="expense" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="family_id" type="xsd:string"/>
+              <xsd:element name="date" type="xsd:date"/>
+              <xsd:element name="category" type="xsd:string"/>
+              <xsd:element name="description" type="xsd:string"/>
+              <xsd:element name="amount" type="xsd:decimal"/>
+              <xsd:element name="payment_mode" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
